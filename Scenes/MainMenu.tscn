@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/goodfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 160.0
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 1 )
+text = "YOU HAVE 12 SECONDS
+
+Get all of the BLUE cubes
+
+ARROW KEYS - Move/Turn
+Z - Jump
+X - Set/Use Teleport Point
+
+~ Press Z to Begin ~"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

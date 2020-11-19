@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/collectable.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Collect.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.443137, 0.611765, 0.87451, 1 )
+
+[sub_resource type="CubeMesh" id=1]
+material = SubResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.611765, 1, 0.992157, 1 )
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[node name="Collect" type="Spatial"]
+transform = Transform( 0.341506, 0.341506, 0.12941, -0.353553, 0.353553, 0, -0.0915063, -0.0915063, 0.482963, 0, 0, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Area" type="Area" parent="MeshInstance"]
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Area"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="MeshInstance/Area" to="." method="_on_Area_body_entered"]
